@@ -3,10 +3,10 @@ import { Mail, MapPin, Phone, Send, Loader2, Check, Instagram, Facebook, Message
 import { supabase } from '@/lib/supabase';
 
 const contactInfo = [
-  { icon: Mail, label: 'E-mail', value: 'contato@projetoadotarmanaus.org.br' },
-  { icon: Phone, label: 'Telefone', value: '(11) 9 8888-7777' },
+  { icon: Mail, label: 'E-mail', value: 'andreaduart@gmail.com' },
+  { icon: Phone, label: 'Telefone', value: '(92) 98440-4552' },
   { icon: MapPin, label: 'Endereço', value: 'Rua dos Animais, 123 — Manaus, AM' },
-  { icon: MessageCircle, label: 'WhatsApp', value: '(11) 9 9999-0000' },
+  { icon: MessageCircle, label: 'WhatsApp', value: '(92) 98440-4552' },
 ];
 
 const socials = [

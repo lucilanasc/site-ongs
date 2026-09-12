@@ -61,7 +61,7 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               CNPJ: 12.345.678/0001-90
               <br />
-              contato@projetoadotarmanaus.org.br
+              andreaduart@gmail.com
               <br />
               São Paulo, SP
             </p>
