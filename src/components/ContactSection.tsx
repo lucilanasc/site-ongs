@@ -3,9 +3,9 @@ import { Mail, MapPin, Phone, Send, Loader2, Check, Instagram, Facebook, Message
 import { supabase } from '@/lib/supabase';
 
 const contactInfo = [
-  { icon: Mail, label: 'E-mail', value: 'contato@patinhasfelizes.org.br' },
+  { icon: Mail, label: 'E-mail', value: 'contato@projetoadotarmanaus.org.br' },
   { icon: Phone, label: 'Telefone', value: '(11) 9 8888-7777' },
-  { icon: MapPin, label: 'Endereço', value: 'Rua das Patinhas, 123 — São Paulo, SP' },
+  { icon: MapPin, label: 'Endereço', value: 'Rua dos Animais, 123 — Manaus, AM' },
   { icon: MessageCircle, label: 'WhatsApp', value: '(11) 9 9999-0000' },
 ];
 

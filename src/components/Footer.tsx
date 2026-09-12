@@ -23,7 +23,7 @@ export default function Footer() {
                 <Heart className="h-5 w-5 text-white" fill="white" />
               </div>
               <span className="text-lg font-bold text-white">
-                Patinhas<span className="text-primary-400">Felizes</span>
+                Projeto<span className="text-primary-400"> Adotar</span> Manaus
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
@@ -61,7 +61,7 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               CNPJ: 12.345.678/0001-90
               <br />
-              contato@patinhasfelizes.org.br
+              contato@projetoadotarmanaus.org.br
               <br />
               São Paulo, SP
             </p>
@@ -74,7 +74,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-neutral-800 pt-8 text-center text-xs">
           <p>
-            © {new Date().getFullYear()} Instituto Patinhas Felizes. Todos os
+            © {new Date().getFullYear()} Projeto Adotar Manaus. Todos os
             direitos reservados. Feito com amor por quem ama animais.
           </p>
         </div>

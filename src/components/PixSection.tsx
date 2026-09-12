@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Copy, Check, QrCode, Heart } from 'lucide-react';
 
-const PIX_KEY = 'contato@patinhasfelizes.org.br';
+const PIX_KEY = 'contato@projetoadotarmanaus.org.br';
 const PIX_KEY_TYPE = 'E-mail';
-const PIX_INSTITUTION = 'Instituto Patinhas Felizes';
+const PIX_INSTITUTION = 'Projeto Adotar Manaus';
 const PIX_CNPJ = '12.345.678/0001-90';
 
 export default function PixSection() {

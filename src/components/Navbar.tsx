@@ -44,7 +44,7 @@ export default function Navbar() {
             <Heart className="h-5 w-5 text-white" fill="white" />
           </div>
           <span className={`text-lg font-bold tracking-tight ${scrolled ? 'text-neutral-800' : 'text-neutral-800'}`}>
-            Patinhas<span className="text-primary-500">Felizes</span>
+            Projeto<span className="text-primary-500"> Adotar</span> Manaus
           </span>
         </a>
 
