@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PawPrint, Menu, X, Heart } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 
 const navLinks = [
   { label: 'Início', href: '#hero' },
@@ -39,9 +39,11 @@ export default function Navbar() {
           }}
           className="flex items-center gap-2.5"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/30">
-            <PawPrint className="h-5 w-5 text-white" />
-          </div>
+          <img
+            src="/images/pata.jpeg"
+            alt="Pata Vida"
+            className="h-12 w-12 rounded-xl object-cover shadow-lg shadow-primary-500/20"
+          />
           <span className="text-lg font-bold tracking-tight text-neutral-800">
             Pata<span className="text-primary-500">Vida</span>
           </span>

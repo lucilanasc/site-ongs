@@ -2,7 +2,7 @@ import { PawPrint, Heart, ArrowRight, MapPin } from 'lucide-react';
 import { supabase, type Pet } from '@/lib/supabase';
 import { useEffect, useState } from 'react';
 
-const defaultChoferImage = 'https://images.pexels.com/photos/16652369/pexels-photo-16652369.jpeg?auto=compress&cs=tinysrgb&h=900&w=1200';
+const choferImage = '/images/chofer.jpeg';
 
 export default function Hero() {
   const [chofer, setChofer] = useState<Pet | null>(null);
@@ -78,7 +78,7 @@ export default function Hero() {
           <div className="relative animate-scale-in" style={{ animationDelay: '0.15s' }}>
             <div className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-primary-500/20">
               <img
-                src={chofer?.image_url || defaultChoferImage}
+                src={choferImage}
                 alt="Chofer — Mascote da Pata Vida"
                 className="h-[420px] w-full object-cover sm:h-[500px]"
               />

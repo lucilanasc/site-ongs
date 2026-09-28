@@ -1,4 +1,4 @@
-import { PawPrint, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Início', href: '#hero' },
@@ -19,9 +19,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600">
-                <PawPrint className="h-5 w-5 text-white" />
-              </div>
+              <img
+                src="/images/pata.jpeg"
+                alt="Pata Vida"
+                className="h-12 w-12 rounded-xl object-cover"
+              />
               <span className="text-lg font-bold text-white">
                 Pata<span className="text-primary-400">Vida</span>
               </span>

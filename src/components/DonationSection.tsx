@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Heart, Copy, Check, QrCode, ShoppingBag, Bone, Cat, Leaf, Package, Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
-const PIX_KEY = '92984404552';
+const PIX_KEY = '92 9358-9338';
 const PIX_KEY_TYPE = 'Telefone';
 const PIX_INSTITUTION = 'Projeto Adotar Manaus — Pata Vida';
 const PIX_CNPJ = '12.345.678/0001-90';
