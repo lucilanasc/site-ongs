@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="max-w-xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700 animate-fade-in">
               <PawPrint className="h-4 w-4" />
-              Projeto Adotar Manaus
+              Pata Vida
             </div>
 
             <h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tight text-neutral-800 animate-fade-in-up sm:text-6xl lg:text-7xl">
@@ -80,35 +80,37 @@ export default function Hero() {
               <img
                 src={choferImage}
                 alt="Chofer — Mascote da Pata Vida"
-                className="h-[420px] w-full object-cover sm:h-[500px]"
+                className="h-[420px] w-full object-cover object-center sm:h-[500px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-primary-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
-                  <PawPrint className="h-3.5 w-3.5" />
-                  Mascote & Fundador
-                </div>
-                <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-                  CHOFER
-                </h2>
-                <p className="mt-2 text-sm text-white/90 sm:text-base">
-                  Mascote, fundador e embaixador da Pata Vida
-                </p>
-                {chofer?.story && (
-                  <p className="mt-3 text-sm leading-relaxed text-white/80 line-clamp-3">
-                    {chofer.story}
-                  </p>
-                )}
-                <button
-                  onClick={() => scrollTo('#pets')}
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-primary-200"
-                >
-                  Conheça o Chofer e outros amiguinhos
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
             </div>
-            <div className="absolute -right-4 -top-4 hidden h-24 w-24 rounded-full bg-accent-400/30 blur-2xl sm:block" />
+
+            {/* Caption card below the photo — nothing over the face */}
+            <div className="mt-5 rounded-[1.5rem] bg-white/90 p-6 shadow-lg shadow-primary-500/10 backdrop-blur-sm">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-primary-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+                <PawPrint className="h-3.5 w-3.5" />
+                Mascote & Fundador
+              </div>
+              <h2 className="text-3xl font-extrabold text-neutral-800 sm:text-4xl">
+                CHOFER
+              </h2>
+              <p className="mt-2 text-sm text-neutral-600 sm:text-base">
+                Mascote, fundador e embaixador da Pata Vida
+              </p>
+              {chofer?.story && (
+                <p className="mt-3 text-sm leading-relaxed text-neutral-500 line-clamp-3">
+                  {chofer.story}
+                </p>
+              )}
+              <button
+                onClick={() => scrollTo('#pets')}
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 transition-colors hover:text-primary-700"
+              >
+                Conheça o Chofer e outros amiguinhos
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+
+            <div className="absolute -right-4 top-0 hidden h-24 w-24 rounded-full bg-accent-400/30 blur-2xl sm:block" />
             <div className="absolute -bottom-4 -left-4 hidden h-32 w-32 rounded-full bg-secondary-400/30 blur-2xl sm:block" />
           </div>
         </div>

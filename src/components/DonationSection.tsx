@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase';
 
 const PIX_KEY = '92 9358-9338';
 const PIX_KEY_TYPE = 'Telefone';
-const PIX_INSTITUTION = 'Projeto Adotar Manaus — Pata Vida';
+const PIX_INSTITUTION = 'Pata Vida';
 const PIX_CNPJ = '12.345.678/0001-90';
 
 const quickAmounts = [5, 10, 20, 50];

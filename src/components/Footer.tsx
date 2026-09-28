@@ -29,7 +29,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              Projeto Adotar Manaus — uma ONG dedicada ao resgate, cuidado e
+              Pata Vida — uma ONG dedicada ao resgate, cuidado e
               adoção responsável de animais abandonados. Cada doação salva uma vida.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-neutral-800 pt-8 text-center text-xs">
           <p>
-            © {new Date().getFullYear()} Projeto Adotar Manaus — Pata Vida. Todos os
+            © {new Date().getFullYear()} Pata Vida. Todos os
             direitos reservados. Feito com amor por quem ama animais.
           </p>
         </div>
