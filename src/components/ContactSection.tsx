@@ -54,18 +54,20 @@ export default function ContactSection() {
       setMessage('');
       setTimeout(() => setSuccess(false), 5000);
     } catch (err) {
-      setError('Não foi possível enviar sua mensagem. Tente novamente em instantes.');
+      setError('Não foi possível enviar sua mensagem. Tente novamente.');
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
+  const inputClass = 'w-full rounded-2xl border-2 border-neutral-200 bg-neutral-50 px-4 py-3 text-base text-neutral-800 outline-none transition-all duration-300 focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-100';
+
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-neutral-50 to-secondary-50/30">
+    <section id="contact" className="section-padding bg-gradient-to-br from-neutral-50 to-primary-50/30">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary-100 px-4 py-2 text-sm font-medium text-secondary-700">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700">
             <Mail className="h-4 w-4" />
             Contato
           </div>
@@ -73,8 +75,8 @@ export default function ContactSection() {
             Fale com a gente
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-500">
-            Quer adotar, ser voluntário ou tirar dúvidas? Envie uma mensagem e
-            responderemos o quanto antes.
+            Quer adotar, ser voluntário, doar produtos ou tirar dúvidas? Envie
+            uma mensagem e responderemos o quanto antes.
           </p>
         </div>
 
@@ -90,12 +92,8 @@ export default function ContactSection() {
                     <info.icon className="h-5 w-5 text-primary-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-neutral-400">
-                      {info.label}
-                    </div>
-                    <div className="text-base font-semibold text-neutral-700">
-                      {info.value}
-                    </div>
+                    <div className="text-sm font-medium text-neutral-400">{info.label}</div>
+                    <div className="text-base font-semibold text-neutral-700">{info.value}</div>
                   </div>
                 </div>
               ))}
@@ -116,47 +114,18 @@ export default function ContactSection() {
           </div>
 
           <div className="lg:col-span-3">
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-3xl bg-white p-6 card-shadow sm:p-8"
-            >
+            <form onSubmit={handleSubmit} className="rounded-3xl bg-white p-6 card-shadow sm:p-8">
               <div className="mb-5">
-                <label className="mb-2 block text-sm font-medium text-neutral-500">
-                  Nome
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Seu nome completo"
-                  className="w-full rounded-2xl border-2 border-neutral-200 bg-neutral-50 px-4 py-3 text-base text-neutral-800 outline-none transition-all duration-300 focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-100"
-                />
+                <label className="mb-2 block text-sm font-medium text-neutral-500">Nome</label>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome completo" className={inputClass} />
               </div>
-
               <div className="mb-5">
-                <label className="mb-2 block text-sm font-medium text-neutral-500">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu@email.com"
-                  className="w-full rounded-2xl border-2 border-neutral-200 bg-neutral-50 px-4 py-3 text-base text-neutral-800 outline-none transition-all duration-300 focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-100"
-                />
+                <label className="mb-2 block text-sm font-medium text-neutral-500">E-mail</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com" className={inputClass} />
               </div>
-
               <div className="mb-5">
-                <label className="mb-2 block text-sm font-medium text-neutral-500">
-                  Mensagem
-                </label>
-                <textarea
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={5}
-                  placeholder="Conte-nos como podemos ajudar..."
-                  className="w-full resize-none rounded-2xl border-2 border-neutral-200 bg-neutral-50 px-4 py-3 text-base text-neutral-800 outline-none transition-all duration-300 focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-100"
-                />
+                <label className="mb-2 block text-sm font-medium text-neutral-500">Mensagem</label>
+                <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={5} placeholder="Conte-nos como podemos ajudar..." className={`${inputClass} resize-none`} />
               </div>
 
               {error && (
@@ -171,30 +140,16 @@ export default function ContactSection() {
                     <Check className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-neutral-800">
-                      Mensagem enviada!
-                    </div>
-                    <div className="text-sm text-neutral-500">
-                      Obrigado pelo contato. Responderemos em breve.
-                    </div>
+                    <div className="font-semibold text-neutral-800">Mensagem enviada!</div>
+                    <div className="text-sm text-neutral-500">Obrigado pelo contato. Responderemos em breve.</div>
                   </div>
                 </div>
               ) : (
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-primary w-full text-lg disabled:cursor-not-allowed disabled:opacity-50"
-                >
+                <button type="submit" disabled={loading} className="btn-primary w-full text-lg disabled:cursor-not-allowed disabled:opacity-50">
                   {loading ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin" />
-                      Enviando...
-                    </>
+                    <><Loader2 className="h-5 w-5 animate-spin" /> Enviando...</>
                   ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      Enviar mensagem
-                    </>
+                    <><Send className="h-5 w-5" /> Enviar mensagem</>
                   )}
                 </button>
               )}

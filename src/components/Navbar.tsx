@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Heart, Menu, X } from 'lucide-react';
+import { PawPrint, Menu, X, Heart } from 'lucide-react';
 
 const navLinks = [
   { label: 'Início', href: '#hero' },
-  { label: 'Pets', href: '#pets' },
-  { label: 'Chave Pix', href: '#pix' },
-  { label: 'Doar', href: '#donate' },
-  { label: 'Contato', href: '#contact' },
+  { label: 'Adote', href: '#pets' },
+  { label: 'Ajude', href: '#ajude' },
+  { label: 'Nossa História', href: '#historia' },
 ];
 
 export default function Navbar() {
@@ -41,10 +40,10 @@ export default function Navbar() {
           className="flex items-center gap-2.5"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/30">
-            <Heart className="h-5 w-5 text-white" fill="white" />
+            <PawPrint className="h-5 w-5 text-white" />
           </div>
-          <span className={`text-lg font-bold tracking-tight ${scrolled ? 'text-neutral-800' : 'text-neutral-800'}`}>
-            Projeto<span className="text-primary-500"> Adotar</span> Manaus
+          <span className="text-lg font-bold tracking-tight text-neutral-800">
+            Pata<span className="text-primary-500">Vida</span>
           </span>
         </a>
 
@@ -63,12 +62,12 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#donate"
+            href="#ajude"
             onClick={(e) => {
               e.preventDefault();
-              handleNavClick('#donate');
+              handleNavClick('#ajude');
             }}
-            className="ml-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:bg-primary-600 hover:-translate-y-0.5"
+            className="ml-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent-500/30 transition-all duration-300 hover:bg-accent-600 hover:-translate-y-0.5"
           >
             <Heart className="h-4 w-4" fill="white" />
             Quero Doar
@@ -101,12 +100,12 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#donate"
+              href="#ajude"
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('#donate');
+                handleNavClick('#ajude');
               }}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/30"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/30"
             >
               <Heart className="h-4 w-4" fill="white" />
               Quero Doar

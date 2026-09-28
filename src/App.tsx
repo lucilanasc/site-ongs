@@ -1,9 +1,10 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PetMural from '@/components/PetMural';
-import PixSection from '@/components/PixSection';
+import HappyEndings from '@/components/HappyEndings';
 import DonationSection from '@/components/DonationSection';
 import ContactSection from '@/components/ContactSection';
+import PartnerBanner from '@/components/PartnerBanner';
 import Footer from '@/components/Footer';
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Navbar />
       <Hero />
       <PetMural />
-      <PixSection />
+      <HappyEndings />
       <DonationSection />
+      <PartnerBanner />
       <ContactSection />
       <Footer />
     </div>

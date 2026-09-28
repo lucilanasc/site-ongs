@@ -1,10 +1,10 @@
-import { Heart, PawPrint } from 'lucide-react';
+import { PawPrint, Heart } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Início', href: '#hero' },
-  { label: 'Mural de Pets', href: '#pets' },
-  { label: 'Chave Pix', href: '#pix' },
-  { label: 'Doar', href: '#donate' },
+  { label: 'Adote', href: '#pets' },
+  { label: 'Ajude', href: '#ajude' },
+  { label: 'Nossa História', href: '#historia' },
   { label: 'Contato', href: '#contact' },
 ];
 
@@ -20,15 +20,15 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600">
-                <Heart className="h-5 w-5 text-white" fill="white" />
+                <PawPrint className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold text-white">
-                Projeto<span className="text-primary-400"> Adotar</span> Manaus
+                Pata<span className="text-primary-400">Vida</span>
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
-              Uma ONG dedicada ao resgate, cuidado e adoção responsável de
-              animais abandonados. Cada doação salva uma vida.
+              Projeto Adotar Manaus — uma ONG dedicada ao resgate, cuidado e
+              adoção responsável de animais abandonados. Cada doação salva uma vida.
             </p>
           </div>
 
@@ -63,10 +63,10 @@ export default function Footer() {
               <br />
               andreaduart@gmail.com
               <br />
-              São Paulo, SP
+              Manaus, Amazonas
             </p>
             <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-800 px-4 py-2 text-xs">
-              <PawPrint className="h-3.5 w-3.5 text-primary-400" />
+              <Heart className="h-3.5 w-3.5 text-primary-400" fill="currentColor" />
               Adoção responsável salva vidas
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-neutral-800 pt-8 text-center text-xs">
           <p>
-            © {new Date().getFullYear()} Projeto Adotar Manaus. Todos os
+            © {new Date().getFullYear()} Projeto Adotar Manaus — Pata Vida. Todos os
             direitos reservados. Feito com amor por quem ama animais.
           </p>
         </div>

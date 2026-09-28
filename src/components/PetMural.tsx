@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
-import { PawPrint, Search, X, Dog, Cat } from 'lucide-react';
+import { PawPrint, Dog, Cat, Search, Heart, MapPin, Check, X, CheckCircle, XCircle } from 'lucide-react';
 import { supabase, type Pet } from '@/lib/supabase';
+import AdoptionForm from '@/components/AdoptionForm';
 
 export default function PetMural() {
   const [pets, setPets] = useState<Pet[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+  const [showAdoptionForm, setShowAdoptionForm] = useState(false);
 
   useEffect(() => {
     const fetchPets = async () => {
       const { data, error } = await supabase
         .from('pets')
         .select('*')
+        .eq('is_adopted', false)
+        .order('is_featured', { ascending: false })
         .order('created_at', { ascending: true });
       if (error) {
         console.error('Erro ao carregar pets:', error);
@@ -43,14 +47,24 @@ export default function PetMural() {
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            {pet.is_featured && (
+              <div className="absolute left-3 top-3 rounded-full bg-primary-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+                Mascote
+              </div>
+            )}
             <div className="absolute bottom-0 left-0 right-0 p-5">
-              <div className="mb-1 flex items-center gap-2">
+              <div className="mb-1 flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-primary-500 px-3 py-1 text-xs font-semibold text-white">
                   {pet.species}
                 </span>
                 {pet.age && (
                   <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-neutral-700">
                     {pet.age}
+                  </span>
+                )}
+                {pet.sex && (
+                  <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-neutral-700">
+                    {pet.sex}
                   </span>
                 )}
               </div>
@@ -74,16 +88,25 @@ export default function PetMural() {
     </div>
   );
 
+  const HealthBadge = ({ label, ok }: { label: string; ok: boolean }) => (
+    <div className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium ${
+      ok ? 'bg-secondary-50 text-secondary-700' : 'bg-neutral-100 text-neutral-500'
+    }`}>
+      {ok ? <CheckCircle className="h-4 w-4 text-secondary-500" /> : <XCircle className="h-4 w-4 text-neutral-400" />}
+      {label}
+    </div>
+  );
+
   return (
     <section id="pets" className="section-padding bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary-100 px-4 py-2 text-sm font-medium text-secondary-700">
             <PawPrint className="h-4 w-4" />
-            Mural de Pets
+            Vitrine de Adoção
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight text-neutral-800 sm:text-5xl">
-            Conheça nossos amiguinhos
+            Adote um amigo
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-500">
             Cada um deles tem uma história de superação. Que tal dar um lar
@@ -142,14 +165,15 @@ export default function PetMural() {
         </div>
       </div>
 
-      {selectedPet && (
+      {/* Pet detail modal — ficha */}
+      {selectedPet && !showAdoptionForm && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setSelectedPet(null)}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           <div
-            className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl animate-scale-in"
+            className="relative z-10 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white shadow-2xl animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -158,6 +182,7 @@ export default function PetMural() {
             >
               <X className="h-5 w-5" />
             </button>
+
             <div className="aspect-[16/10] overflow-hidden">
               <img
                 src={selectedPet.image_url}
@@ -165,52 +190,111 @@ export default function PetMural() {
                 className="h-full w-full object-cover"
               />
             </div>
+
             <div className="p-6 sm:p-8">
-              <div className="mb-4 flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold text-primary-700">
-                  {selectedPet.species}
-                </span>
-                {selectedPet.breed && (
-                  <span className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-600">
-                    {selectedPet.breed}
-                  </span>
-                )}
+              {selectedPet.is_featured && (
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-700">
+                  <PawPrint className="h-3.5 w-3.5" />
+                  Mascote & Fundador
+                </div>
+              )}
+
+              <h3 className="mb-2 text-3xl font-bold text-neutral-800">{selectedPet.name}</h3>
+              {selectedPet.breed && <p className="mb-4 text-base text-neutral-500">{selectedPet.breed}</p>}
+
+              {/* Basic info grid */}
+              <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {selectedPet.age && (
-                  <span className="rounded-full bg-secondary-100 px-3 py-1 text-xs font-medium text-secondary-700">
-                    {selectedPet.age}
-                  </span>
+                  <div className="rounded-2xl bg-neutral-50 p-4 text-center">
+                    <div className="text-xs font-medium text-neutral-400">Idade</div>
+                    <div className="mt-1 text-sm font-bold text-neutral-700">{selectedPet.age}</div>
+                  </div>
+                )}
+                {selectedPet.sex && (
+                  <div className="rounded-2xl bg-neutral-50 p-4 text-center">
+                    <div className="text-xs font-medium text-neutral-400">Sexo</div>
+                    <div className="mt-1 text-sm font-bold text-neutral-700">{selectedPet.sex}</div>
+                  </div>
+                )}
+                <div className="rounded-2xl bg-neutral-50 p-4 text-center">
+                  <div className="text-xs font-medium text-neutral-400">Espécie</div>
+                  <div className="mt-1 text-sm font-bold text-neutral-700">{selectedPet.species}</div>
+                </div>
+                {selectedPet.fiv_felv && (
+                  <div className="rounded-2xl bg-neutral-50 p-4 text-center">
+                    <div className="text-xs font-medium text-neutral-400">FIV/FeLV</div>
+                    <div className="mt-1 text-sm font-bold text-neutral-700">{selectedPet.fiv_felv}</div>
+                  </div>
                 )}
               </div>
-              <h3 className="mb-3 text-3xl font-bold text-neutral-800">{selectedPet.name}</h3>
-              <p className="text-base leading-relaxed text-neutral-600">{selectedPet.description}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedPet(null);
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="btn-primary"
-                >
-                  <PawPrint className="h-5 w-5" />
-                  Quero adotar
-                </a>
-                <a
-                  href="#donate"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedPet(null);
-                    document.querySelector('#donate')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="btn-secondary"
-                >
-                  Ajudar com doação
-                </a>
+
+              {/* Health status */}
+              <div className="mb-6">
+                <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-neutral-500">Status de Saúde</h4>
+                <div className="flex flex-wrap gap-2">
+                  <HealthBadge label="Castrado" ok={selectedPet.castrated} />
+                  <HealthBadge label="Vacinado" ok={selectedPet.vaccinated} />
+                  <HealthBadge label="Microchip" ok={selectedPet.microchipped} />
+                </div>
               </div>
+
+              {/* Temperament */}
+              {selectedPet.temperament && (
+                <div className="mb-6">
+                  <h4 className="mb-2 text-sm font-bold uppercase tracking-wider text-neutral-500">Temperamento</h4>
+                  <p className="rounded-2xl bg-accent-50 p-4 text-base text-neutral-700">{selectedPet.temperament}</p>
+                </div>
+              )}
+
+              {/* Story */}
+              {selectedPet.story && (
+                <div className="mb-6">
+                  <h4 className="mb-2 text-sm font-bold uppercase tracking-wider text-neutral-500">História</h4>
+                  <p className="text-base leading-relaxed text-neutral-600">{selectedPet.story}</p>
+                </div>
+              )}
+
+              {/* Description */}
+              <div className="mb-6">
+                <p className="text-base leading-relaxed text-neutral-600">{selectedPet.description}</p>
+              </div>
+
+              {/* Location */}
+              {selectedPet.location && (
+                <div className="mb-6 rounded-2xl border-2 border-primary-100 bg-primary-50/50 p-5">
+                  <div className="mb-1 flex items-center gap-2 text-sm font-bold text-primary-700">
+                    <MapPin className="h-4 w-4" />
+                    Onde nos encontrar
+                  </div>
+                  <p className="text-sm text-neutral-600">
+                    {selectedPet.location}. Você também pode visitar a vitrine da Petz Amazonas, o Cat Café Mia Lobres ou vir diretamente ao Acolhimento Pata Vida.
+                  </p>
+                </div>
+              )}
+
+              {/* Adopt button */}
+              <button
+                onClick={() => setShowAdoptionForm(true)}
+                className="btn-adopt w-full text-lg"
+              >
+                <PawPrint className="h-5 w-5" />
+                Quero adotar este amigo
+              </button>
             </div>
           </div>
         </div>
+      )}
+
+      {/* Adoption form */}
+      {selectedPet && showAdoptionForm && (
+        <AdoptionForm
+          pet={selectedPet}
+          onClose={() => {
+            setShowAdoptionForm(false);
+            setSelectedPet(null);
+          }}
+          onBack={() => setShowAdoptionForm(false)}
+        />
       )}
     </section>
   );
