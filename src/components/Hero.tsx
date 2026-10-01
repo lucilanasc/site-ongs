@@ -1,8 +1,9 @@
 import { PawPrint, Heart, ArrowRight, MapPin } from 'lucide-react';
 import { supabase, type Pet } from '@/lib/supabase';
+import { getAssetPath } from '@/lib/assets';
 import { useEffect, useState } from 'react';
 
-const choferImage = '/images/chofer.jpeg';
+const choferImage = getAssetPath('chofer.jpeg');
 
 export default function Hero() {
   const [chofer, setChofer] = useState<Pet | null>(null);

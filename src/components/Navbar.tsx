@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 const navLinks = [
   { label: 'Início', href: '#hero' },
@@ -40,7 +41,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5"
         >
           <img
-            src="/images/pata_vida.jpeg"
+            src={getAssetPath('pata_vida.jpeg')}
             alt="Pata Vida"
             className="h-12 w-12 rounded-xl object-cover shadow-lg shadow-primary-500/20"
           />

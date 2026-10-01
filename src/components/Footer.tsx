@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 const footerLinks = [
   { label: 'Início', href: '#hero' },
@@ -20,7 +21,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <img
-                src="/images/pata_vida.jpeg"
+                src={getAssetPath('pata_vida.jpeg')}
                 alt="Pata Vida"
                 className="h-12 w-12 rounded-xl object-cover"
               />

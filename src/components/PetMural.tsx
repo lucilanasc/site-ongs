@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PawPrint, Dog, Cat, Search, Heart, MapPin, Check, X, CheckCircle, XCircle } from 'lucide-react';
 import { supabase, type Pet } from '@/lib/supabase';
+import { resolveImageUrl } from '@/lib/assets';
 
 export default function PetMural() {
   const [pets, setPets] = useState<Pet[]>([]);
@@ -39,7 +40,7 @@ export default function PetMural() {
         >
           <div className="relative aspect-[4/5] overflow-hidden">
             <img
-              src={pet.image_url}
+              src={resolveImageUrl(pet.image_url)}
               alt={pet.name}
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -183,7 +184,7 @@ export default function PetMural() {
 
             <div className="aspect-[16/10] overflow-hidden">
               <img
-                src={selectedPet.image_url}
+                src={resolveImageUrl(selectedPet.image_url)}
                 alt={selectedPet.name}
                 className="h-full w-full object-cover"
               />

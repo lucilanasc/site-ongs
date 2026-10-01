@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Heart, Copy, Check, ShoppingBag, Bone, Cat, Leaf, Package, Loader2, X, QrCode } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { getAssetPath } from '@/lib/assets';
 
 const PIX_KEY = '92 984404552';
 const PIX_KEY_TYPE = 'Telefone';
@@ -236,7 +237,7 @@ export default function DonationSection() {
                 </p>
               </div>
               <div className="mt-2 flex h-40 w-40 items-center justify-center rounded-2xl bg-white p-3 shadow-lg">
-                <img src="/images/qrcode_pata_vida.jpeg" alt="QR Code Pix — Pata Vida" className="h-full w-full rounded-xl object-contain" />
+                <img src={getAssetPath('qrcode_pata_vida.jpeg')} alt="QR Code Pix — Pata Vida" className="h-full w-full rounded-xl object-contain" />
               </div>
               <p className="text-xs font-medium text-neutral-500">Escaneie o QR Code acima para pagar via Pix</p>
             </div>
@@ -337,7 +338,7 @@ export default function DonationSection() {
               </p>
 
               <div className="mx-auto my-6 flex h-56 w-56 items-center justify-center rounded-3xl bg-white p-4 shadow-xl ring-2 ring-accent-100">
-                <img src="/images/qrcode_pata_vida.jpeg" alt="QR Code Pix — Pata Vida" className="h-full w-full rounded-2xl object-contain" />
+                <img src={getAssetPath('qrcode_pata_vida.jpeg')} alt="QR Code Pix — Pata Vida" className="h-full w-full rounded-2xl object-contain" />
               </div>
 
               <div className="mb-4 rounded-2xl bg-accent-50 px-5 py-3">
