@@ -1,6 +1,6 @@
 import { PawPrint } from 'lucide-react';
 
-const partnerText = 'Nossos gatinhos também esperam por você: Visite a vitrine da Petz Amazonas, o Cat Café Mia Lobres ou venha nos conhecer diretamente no Acolhimento Pata Vida.';
+const partnerText = 'Nossos gatinhos também esperam por você: Visite a vitrine da Petz Amazonas, o CatCafé Miau Lovers ou venha nos conhecer diretamente no Acolhimento Pata Vida.';
 
 export default function PartnerBanner() {
   return (

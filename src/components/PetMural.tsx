@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { PawPrint, Dog, Cat, Search, Heart, MapPin, Check, X, CheckCircle, XCircle } from 'lucide-react';
 import { supabase, type Pet } from '@/lib/supabase';
-import AdoptionForm from '@/components/AdoptionForm';
 
 export default function PetMural() {
   const [pets, setPets] = useState<Pet[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
-  const [showAdoptionForm, setShowAdoptionForm] = useState(false);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -166,7 +164,7 @@ export default function PetMural() {
       </div>
 
       {/* Pet detail modal — ficha */}
-      {selectedPet && !showAdoptionForm && (
+      {selectedPet && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setSelectedPet(null)}
@@ -267,35 +265,26 @@ export default function PetMural() {
                     Onde nos encontrar
                   </div>
                   <p className="text-sm text-neutral-600">
-                    {selectedPet.location}. Você também pode visitar a vitrine da Petz Amazonas, o Cat Café Mia Lobres ou vir diretamente ao Acolhimento Pata Vida.
+                    {selectedPet.location}. Você também pode visitar a vitrine da Petz Amazonas, o Catcafé Miau Lovers ou vir diretamente ao Acolhimento Pata Vida.
                   </p>
                 </div>
               )}
 
               {/* Adopt button */}
-              <button
-                onClick={() => setShowAdoptionForm(true)}
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSek3I2zwKrsHWTqEIEHNM4F-nlcSiggvekvCQ_o79lhty2aHA/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-adopt w-full text-lg"
               >
                 <PawPrint className="h-5 w-5" />
                 Quero adotar este amigo
-              </button>
+              </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* Adoption form */}
-      {selectedPet && showAdoptionForm && (
-        <AdoptionForm
-          pet={selectedPet}
-          onClose={() => {
-            setShowAdoptionForm(false);
-            setSelectedPet(null);
-          }}
-          onBack={() => setShowAdoptionForm(false)}
-        />
-      )}
     </section>
   );
 }

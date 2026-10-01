@@ -20,7 +20,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <img
-                src="/images/pata.jpeg"
+                src="/images/pata_vida.jpeg"
                 alt="Pata Vida"
                 className="h-12 w-12 rounded-xl object-cover"
               />
@@ -61,9 +61,7 @@ export default function Footer() {
               Sobre nós
             </h4>
             <p className="text-sm leading-relaxed">
-              CNPJ: 12.345.678/0001-90
-              <br />
-              andreaduart@gmail.com
+              choferpetdog@hotmail.com
               <br />
               Manaus, Amazonas
             </p>

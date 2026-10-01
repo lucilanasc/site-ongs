@@ -3,9 +3,9 @@ import { Mail, MapPin, Phone, Send, Loader2, Check, Instagram, Facebook, Message
 import { supabase } from '@/lib/supabase';
 
 const contactInfo = [
-  { icon: Mail, label: 'E-mail', value: 'andreaduart@gmail.com' },
+  { icon: Mail, label: 'E-mail', value: 'choferpetdog@hotmail.com' },
   { icon: Phone, label: 'Telefone', value: '(92) 98440-4552' },
-  { icon: MapPin, label: 'Endereço', value: 'Rua dos Animais, 123 — Manaus, AM' },
+  { icon: MapPin, label: 'Localização', value: 'Amazonas, Manaus' },
   { icon: MessageCircle, label: 'WhatsApp', value: '(92) 98440-4552' },
 ];
 
